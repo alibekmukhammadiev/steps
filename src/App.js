@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 const messages = [
   "Learn React ⚛️",
@@ -41,22 +43,38 @@ function App() {
             Step {active + 1}: {messages[active]}
           </p>
           <div className="buttons">
-            <button
-              onClick={previous}
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
-            >
+            <Button bgColor="#7950f2" textColor="#fff" onClick={previous}>
+              <span>
+                <AiOutlineArrowLeft />
+              </span>
               Previous
-            </button>
-            <button
+            </Button>
+            <Button
+              bgColor="#7950f2"
+              textColor="#fff"
               onClick={next}
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
+              text="Next"
             >
               Next
-            </button>
+              <span>
+                <AiOutlineArrowRight />
+              </span>
+            </Button>
           </div>
         </div>
       )}
     </>
+  );
+}
+
+function Button({ textColor, bgColor, onClick, children }) {
+  return (
+    <button
+      style={{ backgroundColor: bgColor, color: textColor }}
+      onClick={onClick}
+    >
+      {children}
+    </button>
   );
 }
 
