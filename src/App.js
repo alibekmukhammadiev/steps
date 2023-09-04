@@ -39,9 +39,7 @@ function App() {
             <div className={active >= 2 ? "active" : ""}>3</div>
           </div>
 
-          <p className="message">
-            Step {active + 1}: {messages[active]}
-          </p>
+          <StepMessage active={active}>{messages[active]}</StepMessage>
           <div className="buttons">
             <Button bgColor="#7950f2" textColor="#fff" onClick={previous}>
               <span>
@@ -64,6 +62,15 @@ function App() {
         </div>
       )}
     </>
+  );
+}
+
+function StepMessage({ active, children }) {
+  return (
+    <div className="message">
+      <h3>Step {active + 1}:</h3>
+      {children}
+    </div>
   );
 }
 
